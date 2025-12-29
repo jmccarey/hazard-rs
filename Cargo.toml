@@ -1,0 +1,21 @@
+[package]
+name = "hazard"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+default = []
+loom = ["dep:loom"]
+
+[dependencies]
+tokio = { version = "1", features = ["rt", "time", "sync"] }
+loom = { version = "0.7", optional = true }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+criterion = { version = "0.5", features = ["html_reports"] }
+loom = "0.7"
+
+[[bench]]
+name = "hazard"
+harness = false
